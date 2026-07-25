@@ -16,7 +16,7 @@ layout: default
 <ul class="hero-updates">
   {% for post in site.posts limit:5 %}
     <li>
-      {{ post.date | date: "%d %b %Y" }} —
+      {{ post.date | date: "%d/%m/%Y %H:%M" }} —
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </li>
   {% else %}

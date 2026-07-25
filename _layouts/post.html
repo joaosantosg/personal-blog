@@ -4,7 +4,7 @@ layout: default
 <article class="post-content">
   <h3>{{ page.title }}</h3>
   <div class="post-card__meta">
-    <span>{{ page.date | date: "%d %B %Y" }}</span>
+    <span>{{ page.date | date: "%d/%m/%Y %H:%M" }}</span>
     {% if page.categories.size > 0 %}
       <span>| {{ page.categories | join: " / " }}</span>
     {% endif %}
