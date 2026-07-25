@@ -28,7 +28,7 @@
           <a href="{{ post.url | relative_url }}" class="sidebar-post-link">
             {{ post.title }}
           </a>
-          <span class="sidebar-post-date">{{ post.date | date: "%d %b %Y" }}</span>
+          <span class="sidebar-post-date">{{ post.date | date: "%d/%m/%Y %H:%M" }}</span>
         </div>
       {% else %}
         <span class="sidebar-empty">Nenhum post ainda.</span>

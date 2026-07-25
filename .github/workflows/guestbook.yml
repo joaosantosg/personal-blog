@@ -47,8 +47,8 @@ jobs:
           NAME="${{ steps.extract.outputs.name }}"
           DATE="${{ steps.extract.outputs.date }}"
           MESSAGE="${{ steps.extract.outputs.message }}"
-          ENTRY="  - name: \"$NAME\"\n    date: \"$DATE\"\n    message: \"$MESSAGE\""
-          echo -e "\n$ENTRY" >> _data/guestbook.yml
+          ENTRY="- name: \"$NAME\"\n  date: \"$DATE\"\n  message: \"$MESSAGE\""
+          printf "\n%s" "$ENTRY" >> _data/guestbook.yml
 
       - name: Commit and push
         run: |
