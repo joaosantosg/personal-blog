@@ -6,7 +6,9 @@ on:
 
 jobs:
   add-guestbook:
-    if: contains(github.event.issue.labels.*.name, 'guestbook')
+    if: |
+      contains(github.event.issue.labels.*.name, 'guestbook')
+      || startsWith(github.event.issue.title, '[Guestbook]')
     runs-on: ubuntu-latest
     permissions:
       issues: write
