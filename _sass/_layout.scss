@@ -1,0 +1,415 @@
+// ============================
+// Layout — Aero Glass window
+// ============================
+
+.desktop {
+  position: relative;
+  z-index: $z-base;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $aero-space-xl $aero-space-md $aero-space-2xl;
+}
+
+.site-window {
+  width: 100%;
+  max-width: 1024px;
+  border-radius: $aero-radius-window;
+  background: $aero-gradient-glass;
+  border: 1px solid $aero-glass-edge;
+  box-shadow:
+    0 16px 48px $aero-glass-shadow,
+    0 4px 12px rgba(0, 40, 80, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(22px) saturate(1.6);
+  -webkit-backdrop-filter: blur(22px) saturate(1.6);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow:
+      0 20px 56px $aero-glass-shadow,
+      0 6px 16px rgba(0, 40, 80, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+      0 0 60px rgba(0, 120, 212, 0.06);
+  }
+
+  &.is-maximized {
+    max-width: 100%;
+    border-radius: 0;
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  @media (max-width: $aero-bp-md) {
+    margin: 0;
+    border-radius: $aero-radius-md;
+  }
+}
+
+.desktop:has(.is-maximized) {
+  padding: 0;
+}
+
+// Vista/7 title bar — MAX GLOSS
+.title-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px 7px 14px;
+  background: $aero-gradient-titlebar;
+  color: $aero-text-bright;
+  font-family: $aero-font-display;
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 30, 60, 0.5);
+  user-select: none;
+  border-bottom: 1px solid rgba(0, 60, 120, 0.4);
+
+  // Gloss sheen — stronger
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 52%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.25) 40%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+  }
+}
+
+.title-bar__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+}
+
+.title-bar__icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background:
+    linear-gradient(135deg, #fff 0%, #7ec8f5 40%, #0a5fad 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.title-bar__buttons {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 4px;
+}
+
+.title-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 20px;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  line-height: 1;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: filter 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    filter: brightness(1.12);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    filter: brightness(0.95);
+  }
+
+  &--min {
+    background: linear-gradient(180deg, lighten($aero-btn-min, 12%), $aero-btn-min);
+  }
+
+  &--max {
+    background: linear-gradient(180deg, lighten($aero-btn-max, 12%), darken($aero-btn-max, 8%));
+  }
+
+  &--close {
+    background: linear-gradient(180deg, lighten($aero-btn-close, 12%), darken($aero-btn-close, 5%));
+    width: 42px;
+  }
+}
+
+.content-area {
+  display: flex;
+  min-height: 520px;
+  background: $aero-surface;
+  backdrop-filter: blur(4px);
+
+  @media (max-width: $aero-bp-md) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  width: 200px;
+  min-width: 200px;
+  padding: $aero-space-sm;
+  background: $aero-sidebar;
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset -1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: $aero-bp-md) {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 80, 140, 0.12);
+  }
+}
+
+.main {
+  flex: 1;
+  padding: $aero-space-lg;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 252, 255, 0.97));
+  overflow: hidden;
+  min-width: 0;
+
+  @media (max-width: $aero-bp-md) {
+    padding: $aero-space-md;
+  }
+}
+
+.page-title {
+  font-family: $aero-font-display;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $aero-text;
+  margin-bottom: $aero-space-lg;
+  padding-bottom: $aero-space-sm;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, $aero-primary, transparent) 1;
+}
+
+.hero {
+  margin-bottom: $aero-space-xl;
+  position: relative;
+
+  &__brand {
+    font-family: $aero-font-display;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+    color: $aero-primary-deep;
+    letter-spacing: -0.03em;
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8),
+      0 0 30px rgba(0, 120, 212, 0.1);
+    margin-bottom: $aero-space-sm;
+  }
+
+  &__tagline {
+    font-size: 1.05rem;
+    color: $aero-text-dim;
+    max-width: 36ch;
+    margin-bottom: $aero-space-lg;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $aero-space-sm;
+  }
+}
+
+.hero-updates {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: $aero-text-dim;
+
+  li {
+    margin-bottom: 6px;
+    font-size: 13px;
+
+    a {
+      font-weight: 500;
+    }
+  }
+}
+
+.banner-placeholder {
+  font-size: 12px;
+  color: $aero-text-dim;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: $aero-space-md;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $aero-space-xs;
+  margin-top: $aero-space-xl;
+  font-size: 13px;
+
+  a, span {
+    padding: 4px 14px;
+    border-radius: $aero-radius-sm;
+    border: 1px solid rgba(0, 120, 212, 0.25);
+    background: linear-gradient(180deg, #fff, #e8f2fa);
+    color: $aero-text;
+    text-decoration: none;
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 1px 3px rgba(0, 40, 80, 0.08);
+    transition: all 0.15s ease;
+
+    &:hover {
+      filter: brightness(1.06);
+      text-decoration: none;
+      color: $aero-primary;
+      border-color: rgba(0, 120, 212, 0.45);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 2px 6px rgba(0, 120, 212, 0.15);
+    }
+  }
+
+  .current {
+    background: $aero-gradient-titlebar;
+    color: $aero-text-bright;
+    border-color: $aero-primary-deep;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 1px 4px rgba(0, 40, 80, 0.2);
+  }
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $aero-space-lg;
+  font-size: 13px;
+
+  a {
+    padding: 4px 10px;
+    border-radius: $aero-radius-sm;
+    border: 1px solid rgba(0, 120, 212, 0.2);
+    background: linear-gradient(180deg, #f8fcff, #cfe6f8);
+    color: $aero-link;
+    text-decoration: none;
+    transition: filter 0.15s ease;
+
+    &:hover {
+      filter: brightness(1.06);
+      color: $aero-primary-deep;
+      text-decoration: none;
+    }
+  }
+}
+
+.post-meta-divider {
+  margin: $aero-space-sm 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: $aero-space-xl;
+
+  &__text {
+    color: $aero-text-dim;
+  }
+}
+
+// Error 404
+.error-page {
+  text-align: center;
+  padding: 48px 16px;
+
+  &__code {
+    font-size: 3rem;
+    margin-bottom: $aero-space-sm;
+    color: $aero-primary-deep;
+  }
+
+  &__msg {
+    font-size: 14px;
+    color: $aero-text-dim;
+    margin-bottom: 24px;
+  }
+
+  &__window {
+    display: inline-block;
+    text-align: left;
+    max-width: 360px;
+  }
+
+  &__alert {
+    color: $aero-danger;
+  }
+
+  &__action {
+    text-align: center;
+    margin-top: $aero-space-lg;
+  }
+}
+
+// Taskbar-style footer dock — MAX GLASS
+.aero-dock {
+  margin-top: $aero-space-lg;
+  width: 100%;
+  max-width: 1024px;
+  padding: 10px 18px;
+  border-radius: $aero-radius-md;
+  background: linear-gradient(
+    180deg,
+    rgba(190, 218, 240, 0.6),
+    rgba(130, 178, 218, 0.5)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 6px 24px rgba(20, 60, 100, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(200, 228, 248, 0.65),
+      rgba(140, 188, 228, 0.55)
+    );
+    box-shadow:
+      0 8px 32px rgba(20, 60, 100, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+      0 0 40px rgba(0, 120, 212, 0.05);
+  }
+}

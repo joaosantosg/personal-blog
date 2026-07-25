@@ -1,0 +1,114 @@
+// ============================
+// FRUTIGER AERO MAXIMUS
+// ============================
+
+// Sky / desktop wallpaper — max saturation
+$aero-sky-top: #4db8e8;
+$aero-sky-mid: #8ad0f0;
+$aero-sky-horizon: #d4f0fc;
+$aero-grass: #5fbf70;
+$aero-grass-light: #8fd99e;
+$aero-water: #2e8bc0;
+$aero-water-light: #5bb8e8;
+
+// Glass chrome — max glass
+$aero-glass: rgba(235, 245, 255, 0.5);
+$aero-glass-strong: rgba(255, 255, 255, 0.78);
+$aero-glass-edge: rgba(255, 255, 255, 0.92);
+$aero-glass-shadow: rgba(10, 50, 90, 0.35);
+
+// Title bar (active window) — max gradient gloss
+$aero-title-start: #0a5fad;
+$aero-title-mid: #3a9de8;
+$aero-title-end: #7ec8f5;
+$aero-title-text: #ffffff;
+
+// Surfaces — max blur
+$aero-surface: rgba(248, 252, 255, 0.88);
+$aero-surface-dim: rgba(210, 235, 250, 0.7);
+$aero-sidebar: rgba(200, 228, 245, 0.5);
+
+// Accents — max pop
+$aero-primary: #0078d4;
+$aero-primary-deep: #004e8a;
+$aero-primary-light: #4db8f0;
+$aero-accent: #2ecc71;
+$aero-accent-glow: rgba(46, 204, 113, 0.3);
+$aero-warning: #f0ad4e;
+$aero-danger: #e74c3c;
+
+// Text
+$aero-text: #0f2a3a;
+$aero-text-dim: #3a6070;
+$aero-text-bright: #ffffff;
+$aero-link: #005aad;
+$aero-link-hover: #0088e8;
+$aero-link-visited: #5b2c8a;
+
+// Caption buttons
+$aero-btn-min: #7ec8f5;
+$aero-btn-max: #f0c14a;
+$aero-btn-close: #e74c3c;
+
+// Gradients — max drama
+$aero-gradient-sky: linear-gradient(
+  180deg,
+  $aero-sky-top 0%,
+  $aero-sky-mid 35%,
+  $aero-sky-horizon 65%,
+  lighten($aero-grass, 22%) 88%,
+  $aero-grass 100%
+);
+
+$aero-gradient-titlebar: linear-gradient(
+  180deg,
+  lighten($aero-title-mid, 22%) 0%,
+  $aero-title-mid 25%,
+  $aero-title-start 100%
+);
+
+$aero-gradient-glass: linear-gradient(
+  155deg,
+  rgba(255, 255, 255, 0.6) 0%,
+  rgba(200, 230, 255, 0.3) 40%,
+  rgba(160, 200, 240, 0.2) 70%,
+  rgba(200, 230, 255, 0.15) 100%
+);
+
+$aero-gradient-shine: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.5) 0%,
+  rgba(255, 255, 255, 0.08) 50%,
+  transparent 100%
+);
+
+// Typography — Segoe-like (clean, human)
+$aero-font-body: "Segoe UI", "Nunito Sans", "Trebuchet MS", sans-serif;
+$aero-font-display: "Segoe UI", "Nunito Sans", sans-serif;
+$aero-font-mono: "Consolas", "Cascadia Mono", "Courier New", monospace;
+
+// Spacing
+$aero-space-xs: 4px;
+$aero-space-sm: 8px;
+$aero-space-md: 12px;
+$aero-space-lg: 20px;
+$aero-space-xl: 28px;
+$aero-space-2xl: 40px;
+
+// Radii (Vista/7 soft corners)
+$aero-radius-sm: 4px;
+$aero-radius-md: 8px;
+$aero-radius-lg: 12px;
+$aero-radius-window: 10px;
+
+// Breakpoints
+$aero-bp-sm: 480px;
+$aero-bp-md: 768px;
+$aero-bp-lg: 1024px;
+$aero-bp-xl: 1200px;
+
+// Z-index
+$z-base: 1;
+$z-dropdown: 100;
+$z-overlay: 500;
+$z-modal: 1000;

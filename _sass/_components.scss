@@ -1,0 +1,564 @@
+// ============================
+// Components — Aero Glass
+// ============================
+
+.aero-window {
+  margin: $aero-space-md 0;
+  border-radius: $aero-radius-md;
+  overflow: hidden;
+  background: $aero-gradient-glass;
+  border: 1px solid $aero-glass-edge;
+  box-shadow:
+    0 6px 20px rgba(20, 60, 100, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.25s ease;
+
+  &:hover {
+    box-shadow:
+      0 8px 28px rgba(20, 60, 100, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+      0 0 30px rgba(0, 120, 212, 0.06);
+  }
+
+  &__titlebar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: $aero-gradient-titlebar;
+    font-family: $aero-font-display;
+    font-size: 12px;
+    font-weight: 700;
+    color: $aero-text-bright;
+    text-shadow: 0 1px 2px rgba(0, 40, 80, 0.45);
+    user-select: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 48% 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent);
+      pointer-events: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 3px;
+    position: relative;
+    z-index: 1;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 9px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(180deg, #9ad0f5, #3a9de8);
+      cursor: default;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    span:last-child {
+      width: 32px;
+      background: linear-gradient(180deg, #f08070, #c0392b);
+    }
+  }
+
+  &__body {
+    padding: $aero-space-md;
+    background: $aero-surface;
+  }
+}
+
+.aero-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(0, 120, 212, 0.2);
+  border-radius: $aero-radius-md;
+  padding: $aero-space-md;
+  margin: $aero-space-sm 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 3px 10px rgba(20, 60, 100, 0.08);
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: rgba(0, 120, 212, 0.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 6px 18px rgba(0, 120, 212, 0.14),
+      0 0 30px rgba(0, 120, 212, 0.04);
+    transform: translateY(-1px);
+  }
+}
+
+.aero-btn {
+  display: inline-block;
+  padding: 7px 18px;
+  font-family: $aero-font-body;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: $aero-radius-sm;
+  border: 1px solid rgba(0, 90, 158, 0.45);
+  background: linear-gradient(180deg, #f8fcff, #cfe6f8);
+  color: $aero-text;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 3px rgba(0, 40, 80, 0.14);
+  transition: all 0.15s ease;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    filter: brightness(1.07);
+    text-decoration: none;
+    color: $aero-primary-deep;
+    border-color: rgba(0, 90, 158, 0.6);
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 2px 6px rgba(0, 120, 212, 0.2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    filter: brightness(0.97);
+  }
+
+  &--primary {
+    background: linear-gradient(180deg, lighten($aero-primary, 20%), $aero-primary);
+    color: $aero-text-bright;
+    border-color: $aero-primary-deep;
+    text-shadow: 0 1px 2px rgba(0, 40, 80, 0.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 1px 3px rgba(0, 40, 80, 0.14);
+
+    &:hover {
+      color: #fff;
+      filter: brightness(1.1);
+      border-color: $aero-primary-deep;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 2px 8px rgba(0, 120, 212, 0.3);
+    }
+  }
+}
+
+.aero-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 120, 212, 0.2);
+  background: linear-gradient(180deg, #fff, #e3f1fa);
+  color: $aero-text-dim;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  box-shadow: inset 0 1px 0 #fff;
+
+  &:hover {
+    background: linear-gradient(180deg, #e8f5fc, #c5e4f7);
+    color: $aero-primary-deep;
+    border-color: rgba(0, 120, 212, 0.4);
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 1px 4px rgba(0, 120, 212, 0.12);
+  }
+}
+
+.banner-exchange {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $aero-space-sm;
+  justify-content: center;
+  padding: $aero-space-sm 0;
+
+  img {
+    border-radius: $aero-radius-sm;
+    border: 1px solid rgba(0, 120, 212, 0.25);
+    box-shadow: 0 2px 6px rgba(20, 60, 100, 0.1);
+
+    &:hover {
+      border-color: $aero-primary;
+    }
+  }
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: $aero-space-md;
+
+  &__item {
+    border-radius: $aero-radius-md;
+    overflow: hidden;
+    background: $aero-surface-dim;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 14px rgba(20, 60, 100, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 120, 212, 0.2);
+    }
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    &-caption {
+      padding: 8px;
+      font-size: 12px;
+      color: $aero-text-dim;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  &__placeholder {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 40, 80, 0.35);
+  }
+}
+
+.gallery-footer {
+  text-align: center;
+  margin-top: $aero-space-lg;
+  color: $aero-text-dim;
+  font-size: 12px;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 120, 212, 0.15);
+  border-radius: $aero-radius-md;
+  padding: $aero-space-md;
+  margin-bottom: $aero-space-md;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 3px 12px rgba(20, 60, 100, 0.07);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    border-color: rgba(0, 120, 212, 0.4);
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 8px 24px rgba(0, 120, 212, 0.14),
+      0 0 30px rgba(0, 120, 212, 0.04);
+    transform: translateY(-1px);
+  }
+
+  &__meta {
+    font-size: 12px;
+    color: $aero-text-dim;
+    margin-bottom: 4px;
+    display: flex;
+    gap: $aero-space-md;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+
+    a {
+      color: $aero-primary-deep;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: $aero-link-hover;
+      }
+    }
+  }
+
+  &__excerpt {
+    color: $aero-text-dim;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  &__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+}
+
+// ============================
+// Music Player — glass dock
+// ============================
+
+.music-player {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: $aero-radius-md;
+  padding: $aero-space-sm;
+  font-size: 12px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 1px 4px rgba(0, 60, 100, 0.06);
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.player-btn {
+  width: 28px;
+  height: 24px;
+  border-radius: $aero-radius-sm;
+  border: 1px solid rgba(0, 90, 158, 0.35);
+  background: linear-gradient(180deg, #fff, #cfe6f8);
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $aero-text;
+  padding: 0;
+  font-family: $aero-font-body;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 2px rgba(0, 40, 80, 0.08);
+  transition: all 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+    border-color: rgba(0, 90, 158, 0.55);
+  }
+
+  &:active {
+    filter: brightness(0.95);
+  }
+
+  &--play {
+    width: 36px;
+    background: linear-gradient(180deg, lighten($aero-primary, 22%), $aero-primary);
+    color: #fff;
+    border-color: $aero-primary-deep;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 1px 2px rgba(0, 40, 80, 0.08);
+
+    &:hover {
+      filter: brightness(1.12);
+    }
+  }
+}
+
+.player-info {
+  text-align: center;
+}
+
+.player-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: $aero-text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-artist {
+  font-size: 11px;
+  color: $aero-text-dim;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.player-status {
+  font-size: 10px;
+  color: $aero-primary;
+  margin-bottom: 6px;
+  min-height: 1.2em;
+}
+
+.player-progress {
+  margin: 6px 0;
+}
+
+.player-progress__bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 80, 140, 0.1);
+  border: 1px solid rgba(0, 120, 212, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 40, 80, 0.12);
+}
+
+.player-progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, $aero-primary, lighten($aero-primary, 20%));
+  width: 0%;
+  border-radius: 999px;
+  transition: width 0.1s linear;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.player-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: $aero-text-dim;
+  margin-top: 2px;
+}
+
+.player-volume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.player-vol-icon {
+  font-size: 11px;
+  color: $aero-text-dim;
+}
+
+.player-vol-slider {
+  width: 70px;
+  height: 4px;
+  cursor: pointer;
+  accent-color: $aero-primary;
+}
+
+// ============================
+// Guestbook
+// ============================
+
+.guestbook-form {
+  margin-top: $aero-space-md;
+
+  &__field {
+    margin-bottom: $aero-space-sm;
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: $aero-text;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: $aero-radius-sm;
+      border: 1px solid rgba(0, 120, 212, 0.3);
+      background: rgba(255, 255, 255, 0.9);
+      font-family: $aero-font-body;
+      font-size: 13px;
+      box-shadow: inset 0 1px 2px rgba(0, 40, 80, 0.08);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $aero-primary;
+        box-shadow:
+          inset 0 1px 2px rgba(0, 40, 80, 0.08),
+          0 0 0 3px rgba(0, 120, 212, 0.2);
+      }
+    }
+
+    textarea {
+      height: 80px;
+      resize: vertical;
+    }
+  }
+
+  &__submit {
+    display: inline-block;
+    padding: 6px 16px;
+    font-family: $aero-font-body;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: $aero-radius-sm;
+    border: 1px solid $aero-primary-deep;
+    background: linear-gradient(180deg, lighten($aero-primary, 18%), $aero-primary);
+    color: $aero-text-bright;
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0, 40, 80, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+    &:hover {
+      filter: brightness(1.08);
+    }
+
+    &:active {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+.guestbook-msg {
+  margin-bottom: $aero-space-sm;
+  padding-bottom: $aero-space-sm;
+  border-bottom: 1px solid rgba(0, 120, 212, 0.12);
+
+  &__name {
+    font-weight: 600;
+    color: $aero-primary-deep;
+  }
+
+  &__date {
+    font-size: 11px;
+    color: $aero-text-dim;
+  }
+
+  &__text {
+    margin-top: 4px;
+  }
+}
+
+.guestbook-empty {
+  font-size: 12px;
+  color: $aero-text-dim;
+}
+
+.guestbook-status {
+  font-size: 11px;
+  color: $aero-text-dim;
+  margin-top: 6px;
+
+  &--error {
+    color: $aero-danger;
+  }
+
+  &--success {
+    color: $aero-accent;
+  }
+}

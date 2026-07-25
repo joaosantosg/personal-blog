@@ -1,0 +1,136 @@
+// ============================
+// FRUTIGER AERO MAXIMUS — animations
+// ============================
+
+@keyframes aero-window-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(16px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes aero-drift {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(-24px) translateX(6px);
+  }
+}
+
+@keyframes aero-caustic {
+  from {
+    opacity: 0.7;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(8px);
+  }
+}
+
+@keyframes aero-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes aero-pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 4px 16px rgba(20, 60, 100, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      0 0 20px rgba(0, 120, 212, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 4px 24px rgba(20, 60, 100, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      0 0 40px rgba(0, 120, 212, 0.12);
+  }
+}
+
+@keyframes aero-fish-swim {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(calc(100vw + 60px)) translateY(-8px);
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    transform: translateX(calc(100vw + 60px)) translateY(-4px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes aero-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes aero-glow-pulse {
+  0%, 100% {
+    text-shadow: 0 1px 2px rgba(0, 40, 80, 0.45);
+  }
+  50% {
+    text-shadow: 0 1px 4px rgba(0, 120, 212, 0.3), 0 1px 2px rgba(0, 40, 80, 0.45);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.title-bar {
+  background-size: 200% 100%;
+  animation: aero-shimmer 5s ease-in-out infinite alternate;
+}
+
+.site-window {
+  animation: aero-window-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+
+  &:hover {
+    .aero-window, .aero-card {
+      animation: aero-pulse-glow 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  body::after,
+  body::before,
+  .aero-fish {
+    animation: none !important;
+  }
+}

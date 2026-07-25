@@ -1,0 +1,153 @@
+// ============================
+// Base — Aero desktop
+// ============================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $aero-font-body;
+  font-size: 14px;
+  color: $aero-text;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: $aero-gradient-sky;
+  background-attachment: fixed;
+  position: relative;
+}
+
+// =============================================
+// FRUTIGER AERO MAXIMUS — background layers
+// =============================================
+
+// Layer 1: Atmospheric light rays / flora glow
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    // Grass glow (bottom corners)
+    radial-gradient(ellipse 70% 30% at 10% 88%, rgba(80, 190, 100, 0.3), transparent 70%),
+    radial-gradient(ellipse 60% 25% at 90% 92%, rgba(50, 170, 90, 0.25), transparent 65%),
+    // Water reflections (mid)
+    radial-gradient(ellipse 40% 20% at 20% 65%, rgba(58, 159, 216, 0.2), transparent 60%),
+    radial-gradient(ellipse 35% 15% at 80% 60%, rgba(58, 159, 216, 0.15), transparent 55%),
+    // Light rays from top
+    radial-gradient(ellipse 100px 60px at 22% 10%, rgba(255, 255, 255, 0.4), transparent 70%),
+    radial-gradient(ellipse 80px 50px at 68% 8%, rgba(255, 255, 255, 0.3), transparent 65%),
+    radial-gradient(ellipse 60px 40px at 50% 15%, rgba(255, 255, 255, 0.25), transparent 60%),
+    // Subtle caustic shimmer
+    repeating-linear-gradient(
+      75deg,
+      transparent,
+      transparent 30px,
+      rgba(255, 255, 255, 0.03) 30px,
+      rgba(255, 255, 255, 0.03) 31px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent 45px,
+      rgba(58, 159, 216, 0.04) 45px,
+      rgba(58, 159, 216, 0.04) 46px
+    );
+  animation: aero-caustic 20s ease-in-out infinite alternate;
+}
+
+// Layer 2: Floating glass orbs (bubbles) — MAXIMUS
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    // Large orbs
+    radial-gradient(circle at 8% 35%, rgba(255, 255, 255, 0.35) 0 12px, transparent 14px),
+    radial-gradient(circle at 92% 50%, rgba(255, 255, 255, 0.3) 0 18px, transparent 20px),
+    radial-gradient(circle at 75% 18%, rgba(255, 255, 255, 0.25) 0 9px, transparent 11px),
+    radial-gradient(circle at 20% 72%, rgba(255, 255, 255, 0.22) 0 14px, transparent 16px),
+    radial-gradient(circle at 50% 8%, rgba(255, 255, 255, 0.2) 0 7px, transparent 9px),
+    radial-gradient(circle at 65% 78%, rgba(255, 255, 255, 0.18) 0 10px, transparent 12px),
+    radial-gradient(circle at 35% 55%, rgba(255, 255, 255, 0.15) 0 5px, transparent 6px),
+    radial-gradient(circle at 82% 40%, rgba(255, 255, 255, 0.2) 0 8px, transparent 10px),
+    // Small bubble clusters
+    radial-gradient(circle at 15% 48%, rgba(255, 255, 255, 0.12) 0 3px, transparent 4px),
+    radial-gradient(circle at 18% 52%, rgba(255, 255, 255, 0.1) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 65%, rgba(255, 255, 255, 0.12) 0 3px, transparent 4px),
+    radial-gradient(circle at 76% 62%, rgba(255, 255, 255, 0.1) 0 2px, transparent 3px),
+    radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.1) 0 3px, transparent 4px),
+    radial-gradient(circle at 55% 88%, rgba(255, 255, 255, 0.12) 0 4px, transparent 5px),
+    radial-gradient(circle at 28% 90%, rgba(255, 255, 255, 0.08) 0 2px, transparent 3px),
+    radial-gradient(circle at 90% 82%, rgba(255, 255, 255, 0.1) 0 3px, transparent 4px);
+  animation: aero-drift 28s ease-in-out infinite alternate;
+}
+
+// Layer 3: Frutiger Aero fish silhouettes
+.aero-fish {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  color: rgba(58, 159, 216, 0.12);
+  font-size: 28px;
+  animation: aero-fish-swim 18s ease-in-out infinite alternate;
+
+  &:nth-child(1) { top: 50%; left: -40px; font-size: 24px; animation-duration: 16s; }
+  &:nth-child(2) { top: 58%; left: -60px; font-size: 32px; animation-duration: 22s; animation-delay: -5s; }
+  &:nth-child(3) { top: 44%; left: -30px; font-size: 18px; animation-duration: 14s; animation-delay: -10s; }
+  &:nth-child(4) { top: 62%; left: -50px; font-size: 20px; animation-duration: 20s; animation-delay: -3s; }
+  &:nth-child(5) { top: 54%; left: -35px; font-size: 15px; animation-duration: 12s; animation-delay: -8s; }
+}
+
+a {
+  color: $aero-link;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+
+  &:visited {
+    color: $aero-link-visited;
+  }
+
+  &:hover {
+    color: $aero-link-hover;
+    text-decoration: underline;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  margin: $aero-space-lg 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 120, 212, 0.35),
+    transparent
+  );
+}
+
+::selection {
+  background: rgba(0, 120, 212, 0.35);
+  color: $aero-text;
+}

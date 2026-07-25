@@ -1,0 +1,55 @@
+<button class="sidebar-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰ Menu</button>
+
+<nav id="main-nav">
+  <div class="sidebar-title">Menu</div>
+  <ul class="sidebar-nav">
+    {% for item in site.data.navigation %}
+      <li>
+        <a href="{{ item.url | relative_url }}"
+           class="{% if page.url == item.url %}active{% endif %}">
+          {{ item.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="sidebar-title">About</div>
+  <div class="sidebar-box">
+    <div class="sidebar-box__content sidebar-about">
+      Cantinho Aero do <strong>João Santos</strong>.
+    </div>
+  </div>
+
+  <div class="sidebar-title">Last Posts</div>
+  <div class="sidebar-box">
+    <div class="sidebar-box__content">
+      {% for post in site.posts limit:5 %}
+        <div class="sidebar-post-item">
+          <a href="{{ post.url | relative_url }}" class="sidebar-post-link">
+            {{ post.title }}
+          </a>
+          <span class="sidebar-post-date">{{ post.date | date: "%d %b %Y" }}</span>
+        </div>
+      {% else %}
+        <span class="sidebar-empty">Nenhum post ainda.</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="sidebar-title">Now Playing</div>
+  <div class="sidebar-box">
+    <div class="sidebar-box__content">
+      <div id="music-player" class="music-player"></div>
+      <script id="player-tracks" type="application/json">{{ site.data.music | jsonify }}</script>
+      <script src="{{ '/assets/js/player.js' | relative_url }}"></script>
+    </div>
+  </div>
+
+  <div class="sidebar-title">Links</div>
+  <div class="sidebar-box">
+    <div class="sidebar-box__content sidebar-links">
+      <a href="{{ '/links/' | relative_url }}">Blogroll</a>
+      <a href="{{ '/guestbook/' | relative_url }}">Guestbook</a>
+    </div>
+  </div>
+</nav>

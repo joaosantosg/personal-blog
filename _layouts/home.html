@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<section class="hero fade-in">
+  <h1 class="hero__brand">João Santos</h1>
+  <p class="hero__tagline">Um desktop Aero na web — vidro, céu e posts com calma.</p>
+  <div class="hero__cta">
+    <a href="{{ '/blog/' | relative_url }}" class="aero-btn aero-btn--primary">Ler o blog</a>
+    <a href="{{ '/about/' | relative_url }}" class="aero-btn">Sobre</a>
+  </div>
+</section>
+
+<hr>
+
+<h3>Últimas atualizações</h3>
+<ul class="hero-updates">
+  {% for post in site.posts limit:5 %}
+    <li>
+      {{ post.date | date: "%d %b %Y" }} —
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+  {% else %}
+    <li>Nenhum post ainda. Em breve.</li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<div class="banner-exchange">
+  <span class="banner-placeholder">[ Banners em breve ]</span>
+</div>

@@ -1,0 +1,195 @@
+// ============================
+// Navigation — Aero sidebar
+// ============================
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $aero-space-sm;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $aero-text;
+    text-decoration: none;
+    border-radius: $aero-radius-sm;
+    border: 1px solid transparent;
+    transition: all 0.18s ease;
+
+    &:hover {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(180, 220, 255, 0.5));
+      border-color: rgba(0, 120, 212, 0.3);
+      text-decoration: none;
+      color: $aero-primary-deep;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        0 1px 3px rgba(0, 60, 100, 0.08);
+    }
+
+    &.active {
+      font-weight: 700;
+      background: linear-gradient(180deg, rgba(126, 200, 245, 0.6), rgba(0, 120, 212, 0.28));
+      border-color: rgba(0, 90, 158, 0.4);
+      color: $aero-primary-deep;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.25),
+        0 1px 3px rgba(0, 60, 100, 0.1);
+    }
+  }
+}
+
+.sidebar-title {
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 10px;
+  margin: $aero-space-sm 0 4px;
+  border-radius: $aero-radius-sm;
+  background: $aero-gradient-titlebar;
+  color: $aero-text-bright;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 2px rgba(0, 40, 80, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 1px 3px rgba(0, 40, 80, 0.12);
+}
+
+.sidebar-box {
+  margin-bottom: $aero-space-sm;
+  border-radius: $aero-radius-md;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: $aero-space-sm;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 1px 4px rgba(0, 60, 100, 0.08);
+  backdrop-filter: blur(4px);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 2px 8px rgba(0, 60, 100, 0.12);
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    color: $aero-primary-deep;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(0, 120, 212, 0.15);
+  }
+
+  &__content {
+    color: $aero-text-dim;
+    line-height: 1.55;
+  }
+}
+
+.sidebar-about {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.sidebar-post-item {
+  margin-bottom: 6px;
+}
+
+.sidebar-post-link {
+  font-size: 12px;
+  display: block;
+  line-height: 1.3;
+}
+
+.sidebar-post-date {
+  font-size: 11px;
+  color: $aero-text-dim;
+}
+
+.sidebar-empty {
+  font-size: 11px;
+  color: $aero-text-dim;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-toggle {
+  display: none;
+  width: 100%;
+  background: linear-gradient(180deg, #fff, #d6ebf8);
+  border: 1px solid rgba(0, 120, 212, 0.35);
+  border-radius: $aero-radius-sm;
+  color: $aero-text;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: $aero-font-body;
+  box-shadow: inset 0 1px 0 #fff;
+  text-align: center;
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  @media (max-width: $aero-bp-md) {
+    display: block;
+    margin-bottom: $aero-space-sm;
+  }
+}
+
+#main-nav {
+  @media (max-width: $aero-bp-md) {
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+  }
+}
+
+.site-footer {
+  text-align: center;
+  font-size: 12px;
+  color: $aero-text-dim;
+}
+
+.footer-text {
+  line-height: 1.7;
+
+  a {
+    color: $aero-link;
+    font-size: 12px;
+  }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: $aero-space-md;
+  margin-top: 4px;
+
+  a {
+    padding: 2px 8px;
+    border-radius: $aero-radius-sm;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+    }
+  }
+}

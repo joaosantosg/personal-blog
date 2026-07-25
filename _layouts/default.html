@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <!-- Frutiger Aero fish -->
+  <span class="aero-fish" aria-hidden="true">🐟</span>
+  <span class="aero-fish" aria-hidden="true">🐠</span>
+  <span class="aero-fish" aria-hidden="true">🐟</span>
+  <span class="aero-fish" aria-hidden="true">🐠</span>
+  <span class="aero-fish" aria-hidden="true">🐡</span>
+
+  <div class="desktop">
+    <div class="site-window">
+      <div class="title-bar">
+        <div class="title-bar__label">
+          <span class="title-bar__icon" aria-hidden="true"></span>
+          <span>{{ site.title }}</span>
+        </div>
+        <div class="title-bar__buttons">
+          <button class="title-btn title-btn--min" title="Minimize" aria-label="Minimize" data-action="minimize">_</button>
+          <button class="title-btn title-btn--max" title="Maximize" aria-label="Maximize" data-action="maximize">□</button>
+          <button class="title-btn title-btn--close" title="Close" aria-label="Close" data-action="close">×</button>
+        </div>
+      </div>
+
+      <div class="content-area">
+        <aside class="sidebar">
+          {% include sidebar.html %}
+        </aside>
+
+        <main class="main">
+          {{ content }}
+        </main>
+      </div>
+    </div>
+
+    <div class="aero-dock">
+      {% include footer.html %}
+    </div>
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
