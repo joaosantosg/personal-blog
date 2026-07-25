@@ -25,6 +25,7 @@ jobs:
           script: |
             const body = context.payload.issue.body || '';
             const title = context.payload.issue.title || '';
+            const github = context.payload.issue.user.login;
 
             const name = title.replace(/^\[Guestbook\]\s*/, '').trim();
             const date = new Date().toISOString().split('T')[0];
@@ -32,22 +33,18 @@ jobs:
             const msgMatch = body.match(/\*\*Message:\*\*\s*\n\n([\s\S]*)$/);
             const message = msgMatch ? msgMatch[1].trim() : '';
 
-            const entry = {
-              name,
-              date,
-              message
-            };
-
             core.setOutput('name', name);
             core.setOutput('date', date);
             core.setOutput('message', message);
+            core.setOutput('github', github);
 
       - name: Add to guestbook.yml
         run: |
           NAME="${{ steps.extract.outputs.name }}"
           DATE="${{ steps.extract.outputs.date }}"
           MESSAGE="${{ steps.extract.outputs.message }}"
-          ENTRY="- name: \"$NAME\"\n  date: \"$DATE\"\n  message: \"$MESSAGE\""
+          GITHUB_USER="${{ steps.extract.outputs.github }}"
+          ENTRY="- name: \"$NAME\"\n  date: \"$DATE\"\n  message: \"$MESSAGE\"\n  github: \"$GITHUB_USER\""
           printf "\n%s" "$ENTRY" >> _data/guestbook.yml
 
       - name: Commit and push

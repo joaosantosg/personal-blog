@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Meu Primeiro Post"
-date: 2026-07-24
+date: 2026-07-23 20:00
 categories: [geral]
 tags: [aero, inicio, blog]
 author: João Santos

@@ -16,8 +16,15 @@ permalink: /guestbook/
   <div class="aero-window__body">
     {% for entry in site.data.guestbook reversed %}
       <div class="guestbook-msg">
-        <span class="guestbook-msg__name">{{ entry.name }}</span>
-        <span class="guestbook-msg__date"> ({{ entry.date }})</span>
+        <div class="guestbook-msg__header">
+          {% if entry.github %}
+            <img src="https://github.com/{{ entry.github }}.png?size=40" alt="{{ entry.name }}" class="guestbook-msg__avatar" width="36" height="36">
+          {% endif %}
+          <div>
+            <span class="guestbook-msg__name">{{ entry.name }}</span>
+            <span class="guestbook-msg__date">{{ entry.date }}</span>
+          </div>
+        </div>
         <p class="guestbook-msg__text">{{ entry.message }}</p>
       </div>
     {% endfor %}

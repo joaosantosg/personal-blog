@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Como usar o JasperReports 6.13.0 no Jaspersoft Studio 6.21 em Macs Apple Silicon"
-date: 2026-07-25 14:30
+date: 2026-07-24 14:30
 categories: [dev, jasper]
 tags: [jasper, java, mac, apple-silicon]
 author: João Santos
